@@ -1,0 +1,268 @@
+%===================================================================%
+%===================================================================%
+% 0. Preamble
+%      - Page layout
+%      - Custom commands
+%===================================================================%
+%===================================================================%
+% !TEX root = root_document.tex
+%----------------------------------------------------------------------------------------------------------------------%
+
+\newif\ifnever\neverfalse
+
+
+%===================================================================%
+% Theorem + section customization
+%===================================================================%
+\newcommand*{\CopyCounter}[2]{%
+  \expandafter\def\csname c@#2\endcsname{\csname c@#1\endcsname}%
+  \expandafter\def\csname p@#2\endcsname{\csname p@#1\endcsname}%
+  \expandafter\def\csname the#2\endcsname{\csname the#1\endcsname}}
+\newcounter{Theorem}
+\numberwithin{Theorem}{section}
+\CopyCounter{Theorem}{Proposition}
+\CopyCounter{Theorem}{ProposedProblem}
+\CopyCounter{Theorem}{Property}
+\CopyCounter{Theorem}{Claim}
+\CopyCounter{Theorem}{Lemma}
+\CopyCounter{Theorem}{Corollary}
+\CopyCounter{Theorem}{Conjecture}
+\CopyCounter{Theorem}{Definition}
+\CopyCounter{Theorem}{Example}
+\CopyCounter{Theorem}{Remark}
+\CopyCounter{Theorem}{Question}
+\CopyCounter{Theorem}{Condition}
+\CopyCounter{Theorem}{Criterion}
+\CopyCounter{Theorem}{Observation}
+\theoremstyle{plain}%% needs amsthm.sty
+\newtheorem{thm}[Theorem]{Theorem}
+\providecommand\Theoremname{Theorem}
+\newtheorem{problem}[ProposedProblem]{Problem} % RT changed Proposed Problem -> Problem
+\providecommand\ProposedProblemname{ProposedProblem}
+\newtheorem{prop}[Proposition]{Proposition}
+\providecommand\Propositionname{Proposition}
+\newtheorem{property}[Property]{Property}
+\providecommand\Propertyname{Property}
+\newtheorem{claim}[Claim]{Claim}
+\providecommand\Claimname{Claim}
+\newtheorem{lemma}[Lemma]{Lemma}
+\providecommand\Lemmaname{Lemma}
+\newtheorem{cor}[Corollary]{Corollary}
+\providecommand\Corollaryname{Corollary}
+\theoremstyle{definition}%% needs amsthm.sty
+\newtheorem{definition}[Definition]{Definition}
+\newtheorem{example}[Example]{Example}
+\newtheorem{remark}[Remark]{Remark}
+\providecommand\Remarkname{Remark}
+\newtheorem{conjecture}[Conjecture]{Conjecture}
+\providecommand\Conjecturename{Conjecture}
+\newtheorem{quest}[Question]{Question}
+\newtheorem{cond}[Condition]{Condition}
+\newtheorem{crit}[Criterion]{Criterion}
+\newtheorem{observ}[Observation]{Observation}
+
+\newif\ifnever\neverfalse
+
+
+%===================================================================%
+%===================================================================%
+%\def\chaptername{Chapter}
+%\def\sectionname{Section}
+%\def\subsectionname{Subsection}
+%\def\subsubsectionname{Subsubsection}
+%\def\paragraphname{Paragraph}
+%\renewcommand{\baselinestretch}{2}
+
+
+%===================================================================%
+%===================================================================%
+%===================================================================%
+%======================= USEFUL COMMANDS ==========================%
+%===================================================================%
+%===================================================================%
+%===================================================================%
+
+\newcommand{\bm}[1]{\mbox{\boldmath${#1}$}}
+
+%----------------------------------------------------------------------------------------------------------------------%
+% Domain related
+%----------------------------------------------------------------------------------------------------------------------%
+\newcommand{\domain}{\Omega}
+%\newcommand{\cdomain}{\bar{\Omega}}
+\newcommand{\cdomain}{\widebar{\domain}}
+\newcommand{\boundary}{\partial \domain}
+\newcommand{\inside}{\domain \backslash \partial \domain}
+
+%----------------------------------------------------------------------------------------------------------------------%
+% Bold, hats, etc...
+%----------------------------------------------------------------------------------------------------------------------%
+\newcommand{\bx}[1]{\mbox{\boldmath$x_{#1}$}}
+\newcommand{\by}[1]{\mbox{\boldmath$y_{#1}$}}
+
+\newcommand{\xBar}{\bm{\bar{x}}}
+\newcommand{\xtilde}{\tilde{x}}
+\newcommand{\xhat}{\bm{\hat{x}}}
+\newcommand{\yhat}{\bm{\hat{y}}}
+
+\newcommand{\bxr}{\bx{r}}
+\newcommand{\bxn}{\bx{n}}
+
+\newcommand{\x}{\bm{x}}
+\newcommand{\p}{\bm{p}}
+\newcommand{\bs}{\bm{s}}
+\newcommand{\bt}{\bm{t}}
+
+%----------------------------------------------------------------------------------------------------------------------%
+% Potentially unused
+%----------------------------------------------------------------------------------------------------------------------%
+\newcommand{\widebar}{\overline}
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator{\Forall}{\;\forall\,}
+
+\newcommand{\maxb}{B}
+\newcommand{\bud}{b}
+\newcommand{\budp}{\beta}
+\newcommand{\bq}{\begin{equation}}
+\newcommand{\eq}{\end{equation}}
+\newcommand{\Valn}{U}
+
+%----------------------------------------------------------------------------------------------------------------------%
+% Mathbb
+%----------------------------------------------------------------------------------------------------------------------%
+\newcommand{\R}{\mathbb{R}}					% real numbers
+
+%----------------------------------------------------------------------------------------------------------------------%
+% Mathcal
+%----------------------------------------------------------------------------------------------------------------------%
+\newcommand{\Neigh}{\mathcal{N}}				% neighbors(x)
+\newcommand{\Bd}{\mathcal{B}}				% budget levels
+\newcommand{\TT}{\mathcal{T}}				% operator
+\newcommand{\PF}{\mathcal{PF}}				% Pareto Front
+\newcommand{\Path}{\mathcal{P}}				% Path
+
+%----------------------------------------------------------------------------------------------------------------------%
+% Useful containers
+%----------------------------------------------------------------------------------------------------------------------%
+\newcommand{\VEC}[1]{\text{vec}\left({#1}\right)}	% vector
+\newcommand{\abs}[1]{\left|{#1}\right|}			% absolute value	| |
+\newcommand{\braces}[1]{\left[{#1}\right]}			% braces			[ ]
+\newcommand{\cbraces}[1]{\left\{{#1}\right\}}		% curly Braces		{ }
+\newcommand{\ip}[1]{\left\langle{#1}\right\rangle}	% inner product 	< >
+\newcommand{\norm}[1]{\left\|{#1}\right\|}			% norm			|| ||
+\newcommand{\parens}[1]{\left({#1}\right)}			% parentheses		( )
+\newcommand{\floor}[1]{\left\lfloor{#1}\right\rfloor}	% floor
+\newcommand{\ceil}[1]{\left\lceil{#1}\right\rceil}		% ceil
+\newcommand{\mybox}[1]{\boxed{#1}}			% boxed
+
+
+
+%===================================================================%
+%===================================================================%
+%===================================================================%
+%===================== END USEFUL COMMANDS ========================%
+%===================================================================%
+%===================================================================%
+%===================================================================%
+
+%AV
+%===================================================================%
+% Margin fixes
+%===================================================================%
+%\usepackage{psfig}
+\newcommand{\marginfix}{
+\setlength{\parskip}{0.01cm}
+\setlength{\textwidth}{6.0in}
+%latex measures from 1 in down and over for some reason
+\setlength{\oddsidemargin}{-0.0 in}
+\setlength{\evensidemargin}{0.0 in}
+\setlength{\topmargin}{-0.5in}
+\setlength{\textheight}{9.0 in}
+}
+
+\newcommand{\mymarginfix}{
+\setlength{\parskip}{0.01cm}
+\setlength{\textwidth}{5.0in}
+%latex measures from 1 in down and over for some reason
+\setlength{\oddsidemargin}{1.0 in}
+\setlength{\evensidemargin}{0 in}
+\setlength{\topmargin}{-0.8in}
+\setlength{\textheight}{6.5 in}
+}
+\marginfix
+
+
+%===================================================================%
+% Bibliography
+%===================================================================%
+\let\oldthebibliography=\thebibliography
+  \let\endoldthebibliography=\endthebibliography
+  \renewenvironment{thebibliography}[1]{%
+    \begin{oldthebibliography}{#1}%
+      \setlength{\parskip}{.3ex}%
+      \setlength{\itemsep}{.3ex}%
+  }%
+  {%
+    \end{oldthebibliography}%
+  }
+
+
+%===================================================================%
+% Paragraph, captions, margins
+%===================================================================%
+\addtolength{\partopsep}{-1mm}
+\addtolength{\itemsep}{-4mm}
+\addtolength{\abovedisplayskip}{-2mm}
+\addtolength{\belowdisplayskip}{-2mm}
+\addtolength{\belowcaptionskip}{-1mm}
+\addtolength{\abovecaptionskip}{-1mm}
+\addtolength{\textfloatsep}{-1mm}
+%\input psfig
+%\usepackage{psfig}
+
+\setlength{\marginparwidth}{2cm}
+
+
+
+%\reversemarginpar
+
+%\long\def\authornote#1{%
+%        \marginnote{\it #1}}
+%\newcommand{\thomas}[1]{\authornote{TAF: #1}}
+%\renewcommand{\thomas}[2][]{}
+
+
+%===================================================================%
+% \fillmeup command
+%===================================================================%
+%%%
+\newcommand{%
+\fillmeup}{%
+\vspace{.1in}%
+\\%
+}%
+
+
+%===================================================================%
+% Typesetting MATLAB code
+%===================================================================%
+
+\lstset{language=Matlab,%
+    %basicstyle=\color{red},
+    breaklines=true,%
+    morekeywords={matlab2tikz},
+    keywordstyle=\color{blue},%
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    stringstyle=\color{mylilas},
+    commentstyle=\color{mygreen},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    numbers=left,%
+    numberstyle={\tiny \color{black}},% size of the numbers
+    numbersep=9pt, % this defines how far the numbers are from the text
+    emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
+
+
+
